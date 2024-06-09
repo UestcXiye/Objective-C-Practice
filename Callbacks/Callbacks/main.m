@@ -15,9 +15,20 @@ int main(int argc, const char * argv[]) {
         // 通知
         [[NSNotificationCenter defaultCenter]
             addObserver:logger // 将 logger 注册为观察者
-            selector:@selector(zoneChange:)
+            selector:@selector(zoneChangeSelector:)
             name:NSSystemTimeZoneDidChangeNotification // 通知名
             object:nil];
+        // 转而用 Block 对象实现
+        void (^zoneChange)(NSNotification *note); // 声明
+        zoneChange = ^(NSNotification *note)
+        { // 该方法将在系统发布 NSSystemTimeZoneDidChangeNotification 通知时被调用
+            NSLog(@"The system time zone has changed");
+        };
+        [[NSNotificationCenter defaultCenter]
+            addObserverForName:NSSystemTimeZoneDidChangeNotification
+            object:nil
+            queue:nil
+            usingBlock:zoneChange];
         
         // 辅助对象
         NSURL *url = [NSURL URLWithString:@"http://www.gutenberg.org/cache/epub/205/pg205.txt"];

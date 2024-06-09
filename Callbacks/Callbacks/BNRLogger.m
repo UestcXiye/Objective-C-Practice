@@ -58,7 +58,7 @@
     _incomingData = nil;
 }
 
-- (void)zoneChange:(NSNotification *)note
+- (void)zoneChangeSelector:(NSNotification *)note
 { // 该方法将在系统发布 NSSystemTimeZoneDidChangeNotification 通知时被调用
     NSLog(@"The system time zone has changed");
 }
