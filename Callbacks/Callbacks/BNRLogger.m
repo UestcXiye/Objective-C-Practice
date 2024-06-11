@@ -9,6 +9,11 @@
 
 @implementation BNRLogger
 
++ (NSSet *)keyPathsForValuesAffectingLastTimeString
+{
+    return [NSSet setWithObject:@"lastTime"];
+}
+
 - (NSString *)lastTimeString
 {
     // static 让所有的 BNRLogger 实例共享一个 NSDateFormatter
@@ -27,7 +32,10 @@
 - (void)updateLastTime:(NSTimer *)timer
 {
     NSDate *now = [NSDate date];
-    [self setLastTime:now];
+    // [self setLastTime:now];
+    [self willChangeValueForKey:@"lastTime"];
+    _lastTime = now;
+    [self didChangeValueForKey:@"lastTime"];
     NSLog(@"Just set time to %@", self.lastTimeString);
 }
 

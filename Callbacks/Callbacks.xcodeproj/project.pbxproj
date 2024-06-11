@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16AD58212C14920B00C699CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AD58202C14920B00C699CC /* main.m */; };
 		16AD58292C149B3D00C699CC /* BNRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AD58282C149B3D00C699CC /* BNRLogger.m */; };
+		16F426052C18000E00A127A2 /* BNRObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F426042C18000E00A127A2 /* BNRObserver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		16AD58202C14920B00C699CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		16AD58272C149B3D00C699CC /* BNRLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNRLogger.h; sourceTree = "<group>"; };
 		16AD58282C149B3D00C699CC /* BNRLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNRLogger.m; sourceTree = "<group>"; };
+		16F426032C18000E00A127A2 /* BNRObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNRObserver.h; sourceTree = "<group>"; };
+		16F426042C18000E00A127A2 /* BNRObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNRObserver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				16AD58202C14920B00C699CC /* main.m */,
+				16F426032C18000E00A127A2 /* BNRObserver.h */,
+				16F426042C18000E00A127A2 /* BNRObserver.m */,
 				16AD58272C149B3D00C699CC /* BNRLogger.h */,
 				16AD58282C149B3D00C699CC /* BNRLogger.m */,
 			);
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16AD58292C149B3D00C699CC /* BNRLogger.m in Sources */,
+				16F426052C18000E00A127A2 /* BNRObserver.m in Sources */,
 				16AD58212C14920B00C699CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
