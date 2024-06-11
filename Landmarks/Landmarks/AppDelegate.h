@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  iTahDoodle
+//  Landmarks
 //
-//  Created by 刘文晨 on 2024/6/10.
+//  Created by 刘文晨 on 2024/6/11.
 //
 
 #import <UIKit/UIKit.h>
