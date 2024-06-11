@@ -12,6 +12,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BNROwnedAppliance *a = [[BNROwnedAppliance alloc] init];
         NSLog(@"%@", a);
+        int v = [[a valueForKey:@"voltage"] intValue];
     }
     return 0;
 }
