@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1602C77F2C197E750046D7F7 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 1602C77E2C197E750046D7F7 /* Place.m */; };
+		1602C7822C1984A40046D7F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1602C7812C1984A40046D7F7 /* MapKit.framework */; };
+		1602C7872C1A815C0046D7F7 /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1602C7862C1A815C0046D7F7 /* PlaceCell.m */; };
+		1602C7892C1ABB6B0046D7F7 /* PlaceInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1602C7882C1ABB6B0046D7F7 /* PlaceInfo.plist */; };
+		1602C7942C1C3BF90046D7F7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1602C7932C1C3BF90046D7F7 /* DetailViewController.m */; };
 		16F426452C1881A000A127A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F426442C1881A000A127A2 /* AppDelegate.m */; };
 		16F426482C1881A000A127A2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F426472C1881A000A127A2 /* SceneDelegate.m */; };
 		16F4264B2C1881A000A127A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F4264A2C1881A000A127A2 /* ViewController.m */; };
@@ -37,6 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1602C77D2C197E750046D7F7 /* Place.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		1602C77E2C197E750046D7F7 /* Place.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		1602C7812C1984A40046D7F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1602C7852C1A815C0046D7F7 /* PlaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceCell.h; sourceTree = "<group>"; };
+		1602C7862C1A815C0046D7F7 /* PlaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceCell.m; sourceTree = "<group>"; };
+		1602C7882C1ABB6B0046D7F7 /* PlaceInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PlaceInfo.plist; sourceTree = "<group>"; };
+		1602C78A2C1BFE390046D7F7 /* PlaceCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceCellDelegate.h; sourceTree = "<group>"; };
+		1602C7922C1C3BF90046D7F7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1602C7932C1C3BF90046D7F7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		16F426402C1881A000A127A2 /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F426432C1881A000A127A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		16F426442C1881A000A127A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1602C7822C1984A40046D7F7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1602C7802C1984A40046D7F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1602C7812C1984A40046D7F7 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		16F426372C18819F00A127A2 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +111,7 @@
 				16F4265E2C1881A300A127A2 /* LandmarksTests */,
 				16F426682C1881A300A127A2 /* LandmarksUITests */,
 				16F426412C1881A000A127A2 /* Products */,
+				1602C7802C1984A40046D7F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,10 +134,18 @@
 				16F426472C1881A000A127A2 /* SceneDelegate.m */,
 				16F426492C1881A000A127A2 /* ViewController.h */,
 				16F4264A2C1881A000A127A2 /* ViewController.m */,
+				1602C77D2C197E750046D7F7 /* Place.h */,
+				1602C77E2C197E750046D7F7 /* Place.m */,
+				1602C7852C1A815C0046D7F7 /* PlaceCell.h */,
+				1602C7862C1A815C0046D7F7 /* PlaceCell.m */,
+				1602C78A2C1BFE390046D7F7 /* PlaceCellDelegate.h */,
+				1602C7922C1C3BF90046D7F7 /* DetailViewController.h */,
+				1602C7932C1C3BF90046D7F7 /* DetailViewController.m */,
 				16F4264C2C1881A000A127A2 /* Main.storyboard */,
 				16F4264F2C1881A200A127A2 /* Assets.xcassets */,
 				16F426512C1881A200A127A2 /* LaunchScreen.storyboard */,
 				16F426542C1881A200A127A2 /* Info.plist */,
+				1602C7882C1ABB6B0046D7F7 /* PlaceInfo.plist */,
 				16F426552C1881A200A127A2 /* main.m */,
 			);
 			path = Landmarks;
@@ -241,6 +273,7 @@
 			files = (
 				16F426502C1881A200A127A2 /* Assets.xcassets in Resources */,
 				16F426532C1881A200A127A2 /* Base in Resources */,
+				1602C7892C1ABB6B0046D7F7 /* PlaceInfo.plist in Resources */,
 				16F4264E2C1881A000A127A2 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,10 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1602C77F2C197E750046D7F7 /* Place.m in Sources */,
 				16F4264B2C1881A000A127A2 /* ViewController.m in Sources */,
 				16F426452C1881A000A127A2 /* AppDelegate.m in Sources */,
+				1602C7872C1A815C0046D7F7 /* PlaceCell.m in Sources */,
 				16F426562C1881A200A127A2 /* main.m in Sources */,
 				16F426482C1881A000A127A2 /* SceneDelegate.m in Sources */,
+				1602C7942C1C3BF90046D7F7 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +349,7 @@
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		16F426512C1881A200A127A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -456,6 +493,8 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,6 +522,8 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
