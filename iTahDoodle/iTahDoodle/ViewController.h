@@ -10,7 +10,7 @@
 NSString *docPath(void);
 
 @interface ViewController : UIViewController
-    <UITextFieldDelegate, UIApplicationDelegate, UITableViewDelegate>
+    <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_taskTable; // 表格视图，显示所有任务
     UITextField *_taskField; // 输入框

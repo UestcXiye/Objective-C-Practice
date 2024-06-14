@@ -39,7 +39,8 @@ NSString *docPath(void)
     
     // 创建并设置 UITableView 对象
     self.taskTable = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
-    self.taskTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.taskTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.taskTable.separatorColor = UIColor.grayColor;
     // 将当前对象设置为 UITableView 对象的 dataSource
     self.taskTable.dataSource = self;
     // 需要创建新的单元格时，告诉 UITableView 对象要实例化哪个类

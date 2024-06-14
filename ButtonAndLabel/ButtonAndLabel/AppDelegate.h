@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  iTahDoodle
+//  ButtonAndLabel
 //
-//  Created by 刘文晨 on 2024/6/10.
+//  Created by 刘文晨 on 2024/6/12.
 //
 
 #import <UIKit/UIKit.h>
