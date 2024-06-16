@@ -7,13 +7,16 @@
 
 #import "ViewController.h"
 #import "Place.h"
-#import "DetailViewController.h"
 
 @interface ViewController ()
-
+//{
+//    NSMutableArray *_places;
+//}
 @end
 
 @implementation ViewController
+
+//@synthesize places = _places;
 
 - (void)viewDidLoad
 {
@@ -28,6 +31,8 @@
     // 设置标签的字体
     UIFont *labelFavorFont = [UIFont systemFontOfSize:18];
     [labelFavor setFont:labelFavorFont];
+    // 添加目标-动作对
+    [favoriteSwitch addTarget:self action:@selector(favoriteSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
     // 设置分隔线
     [dividerView2 setBackgroundColor:UIColor.lightGrayColor];
     // 设置 TableView
@@ -44,7 +49,82 @@
     // [placeTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     [placeTable registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCellIdentfier"];
     
+    /* width: 393, height: 852 */
+//    CGFloat viewFrameWidth = self.view.frame.size.width, viewFrameHeight = self.view.frame.size.height;
+//    CGRect labelTitleFrame = CGRectMake(0, 0, 200, 80);
+//    CGRect dividerViewFrame = CGRectMake(0, 0, viewFrameWidth - 20, 1);
+//    CGRect labelFavorFrame = CGRectMake(0, 0, 150, 50);
+//    CGRect favoriteSwitchFrame = CGRectMake(0, 0, 80, 50);
+//    CGRect placeTableFrame = CGRectMake(0, 0, viewFrameWidth, 500);
+//
+//    // 创建并设置 labelTitle
+//    self.labelTitle = [[UILabel alloc] initWithFrame:labelFavorFrame];
+//    // 设置应用标题的字体
+//    UIFont *labelTitleFont = [UIFont fontWithName:@"Helvetica-Bold" size:35];
+//    [self.labelTitle setFont:labelTitleFont];
+//    self.labelTitle.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    // 创建并设置 dividerView1
+//    self.dividerView1 = [[UIView alloc] initWithFrame:dividerViewFrame];
+//    [self.dividerView1 setBackgroundColor:UIColor.lightGrayColor];
+//    self.dividerView1.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    // 创建并设置 labelFavor
+//    self.labelFavor = [[UILabel alloc] initWithFrame:labelFavorFrame];
+//    // 设置标签的字体
+//    UIFont *labelFavorFont = [UIFont systemFontOfSize:18];
+//    [self.labelFavor setFont:labelFavorFont];
+//    self.labelFavor.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    // 创建并设置 favoriteSwitch
+//    self.favoriteSwitch = [[UISwitch alloc] initWithFrame:favoriteSwitchFrame];
+//    self.favoriteSwitch.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    // 创建并设置 dividerView2
+//    self.dividerView2 = [[UIView alloc] initWithFrame:dividerViewFrame];
+//    [self.dividerView2 setBackgroundColor:UIColor.lightGrayColor];
+//    self.dividerView2.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    // 创建并设置 placeTable
+//    self.placeTable = [[UITableView alloc] initWithFrame:placeTableFrame];
+//    [self.placeTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+//    [self.placeTable setSeparatorColor:UIColor.lightGrayColor];
+//    self.placeTable.translatesAutoresizingMaskIntoConstraints = NO;
+//    // 将当前对象设置为 UITableView 对象的 dataSource
+//    [self.placeTable setDataSource:self];
+//    // 设置 UITableViewDelegate
+//    self.placeTable.delegate = self;
+//    // 需要创建新的单元格时，告诉 UITableView 对象要实例化哪个类
+//    // [placeTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+//    [self.placeTable registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCellIdentfier"];
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     [self initPlaces];
+
+//    [self.view addSubview:self.labelTitle];
+//    [self.view addSubview:self.dividerView1];
+//    [self.view addSubview:self.labelFavor];
+//    [self.view addSubview:self.favoriteSwitch];
+//    [self.view addSubview:self.dividerView2];
+//    [self.view addSubview:self.placeTable];
+    
+//    /* 添加约束 */
+//    [NSLayoutConstraint activateConstraints:@[
+//        [self.labelTitle.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:95],
+//        [self.labelTitle.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+//        [self.dividerView1.topAnchor constraintEqualToAnchor:self.labelTitle.bottomAnchor constant:10],
+//        [self.dividerView1.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+//        [self.dividerView1.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:0],
+//        [self.labelFavor.topAnchor constraintEqualToAnchor:self.dividerView1.bottomAnchor constant:10],
+//        [self.labelFavor.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+//        [self.favoriteSwitch.topAnchor constraintEqualToAnchor:self.dividerView1.bottomAnchor constant:10],
+//        [self.favoriteSwitch.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+//        [self.dividerView2.topAnchor constraintEqualToAnchor:self.labelFavor.bottomAnchor constant:10],
+//        [self.dividerView2.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+//        [self.dividerView2.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:0],
+//        [self.placeTable.topAnchor constraintEqualToAnchor:self.dividerView2.bottomAnchor constant:0],
+//        [self.placeTable.widthAnchor constraintEqualToAnchor:self.view.widthAnchor]
+//    ]];
 }
 
 #pragma mark - 初始化 places 数组
@@ -76,6 +156,17 @@
         // Place *place = [[Place alloc] initWithSight:[placeInfo objectForKey:@"sight"] scenicArea:[placeInfo objectForKey:@"scenicArea"] state:[placeInfo objectForKey:@"state"] picture:[UIImage imageNamed:[placeInfo objectForKey:@"pictureUrl"]] favorite:[placeInfo objectForKey:@"favorite"] location:[[CLLocation alloc] initWithLatitude:[[placeInfo objectForKey:@"latitude"] doubleValue] longitude:[[placeInfo objectForKey:@"longitude"] doubleValue]]];
         // 插入数组
         [self.places addObject:place];
+    }
+}
+
+- (IBAction)favoriteSwitchValueChanged:(UISwitch *)sender {
+    if ([sender isOn])
+    {
+        placeTable.backgroundColor = [UIColor whiteColor];
+    }
+    else
+    {
+        placeTable.backgroundColor = [UIColor blackColor];
     }
 }
 
@@ -164,8 +255,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // NSLog(@"row %ld clicked", indexPath.row);
+    // 初始化详情视图控制器
     DetailViewController *detailViewController = [DetailViewController new];
     [detailViewController setPlace:[self.places objectAtIndex:indexPath.row]];
+    [detailViewController setIndex:indexPath.row];
+    // 设置代理，并且遵守 DetailViewControllerDelegate
+    detailViewController.detailViewControllerDelegate = self;
+    // 界面跳转
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
@@ -175,12 +271,26 @@
 {
     // 去 TableView 查该 cell 对应的 indexPath
     NSIndexPath *indexPath = [placeTable indexPathForCell:cell];
+    // NSIndexPath *indexPath = [self.placeTable indexPathForCell:cell];
     NSLog(@"before starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
     // 修改数据源对应的对象
     [self.places[indexPath.row] setFavorite:newFavorite];
     NSLog(@"after starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
     // TableView 重新加载被修改了的那一行
     [placeTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    // [self.placeTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+# pragma mark - DtailViewControllerDelegate Method
+
+// 实现协议方法，获取值
+- (void)detailViewController:(DetailViewController *)detailViewController goBackWithFavorite:(BOOL)favorite atIndex:(NSInteger)index
+{
+    // 修改数据源对应的对象
+    [self.places[index] setFavorite:favorite];
+    // TableView 重新加载被修改了的那一行
+    [placeTable reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    // [self.placeTable reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

@@ -57,6 +57,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5R-Sp-Q3E">
                                 <rect key="frame" x="316" y="127" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="favoriteSwitchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2ys-hh-odu"/>
+                                </connections>
                             </switch>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivn-Vd-l2k">
                                 <rect key="frame" x="16" y="165" width="377" height="1"/>
@@ -68,8 +71,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="CAx-iD-XI7"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jq3-Fh-5pl"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="290-JT-Rd8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cJR-xv-uep"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -78,11 +81,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="OpD-8z-Phu"/>
                     <connections>
-                        <outlet property="dividerView1" destination="kg8-B1-pv8" id="cOp-y3-DXJ"/>
-                        <outlet property="dividerView2" destination="ivn-Vd-l2k" id="LeW-Vl-V2t"/>
-                        <outlet property="labelFavor" destination="8Iy-PP-Umz" id="lUV-mn-DEZ"/>
-                        <outlet property="labelTitle" destination="6Mn-xI-MKd" id="II1-vU-VcX"/>
-                        <outlet property="placeTable" destination="uvH-cV-aXP" id="Bf0-GG-AbI"/>
+                        <outlet property="dividerView1" destination="kg8-B1-pv8" id="VGA-4c-1DH"/>
+                        <outlet property="dividerView2" destination="ivn-Vd-l2k" id="TUi-Ou-U9x"/>
+                        <outlet property="labelFavor" destination="8Iy-PP-Umz" id="pbJ-Wb-xCd"/>
+                        <outlet property="labelTitle" destination="6Mn-xI-MKd" id="phx-mP-w5l"/>
+                        <outlet property="placeTable" destination="uvH-cV-aXP" id="cJL-CG-ENl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

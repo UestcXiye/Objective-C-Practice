@@ -30,9 +30,9 @@
             filePath = "Landmarks/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-favoriteSwitchValueChanged:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

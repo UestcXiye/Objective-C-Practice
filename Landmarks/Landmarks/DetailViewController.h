@@ -9,11 +9,23 @@
 #import <MapKit/MapKit.h>
 
 @class Place;
+@class DetailViewController;
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DetailViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)detailViewController:(DetailViewController *)detailViewController goBackWithFavorite:(BOOL)favorite atIndex:(NSInteger)index;
+
+@end
+
 @interface DetailViewController : UIViewController
 
+@property (nonatomic, weak) id <DetailViewControllerDelegate> detailViewControllerDelegate;
+
+@property (nonatomic) UILabel *topLabel;
 @property (nonatomic) MKMapView *mapView;
 @property (nonatomic) UIImageView *pictureView;
 @property (nonatomic) UILabel *sightLabel;
@@ -22,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) UILabel *stateLabel;
 
 @property (nonatomic) Place *place;
+@property (nonatomic) BOOL favorite;
+@property (nonatomic) NSInteger index;
 
 @end
 
