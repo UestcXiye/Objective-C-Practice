@@ -53,9 +53,8 @@
     // 创建并设置 pictureView
     self.pictureView = [[UIImageView alloc] initWithFrame:pictureFrame];
     [self.pictureView setImage:[self.place picture]];
-    self.pictureView.layer.cornerRadius = 125.0f;
-    self.pictureView.clipsToBounds = NO;
-    self.pictureView.layer.borderWidth = 4.0f;
+    self.pictureView.layer.cornerRadius = 125.0;
+    self.pictureView.layer.borderWidth = 4.0;
     self.pictureView.layer.borderColor = [UIColor whiteColor].CGColor;
     // self.pictureView.contentMode = UIViewContentModeScaleAspectFit;
     self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -65,10 +64,9 @@
     UIView *shadowView = [[UIView alloc] initWithFrame:self.pictureView.frame];
     shadowView.layer.shadowColor = [UIColor grayColor].CGColor;
     shadowView.layer.shadowOffset = CGSizeMake(0, 0);
-    shadowView.layer.shadowOpacity = 1;
+    shadowView.layer.shadowOpacity = 1.0;
     shadowView.layer.shadowRadius = 9.0;
     shadowView.layer.cornerRadius = 9.0;
-    shadowView.clipsToBounds = NO;
     [shadowView addSubview:self.pictureView];
     
     // 创建并设置 sightLabel

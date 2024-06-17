@@ -300,7 +300,6 @@
 // 实现协议方法，获取值
 - (void)detailViewController:(DetailViewController *)detailViewController goBackWithFavorite:(BOOL)favorite atIndex:(NSInteger)index
 {
-    
     // 修改数据源对应的对象
     [self.places[index] setFavorite:favorite];
     // TableView 重新加载被修改了的那一行
