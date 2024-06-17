@@ -8,28 +8,10 @@
 #import "PlaceCell.h"
 
 @interface PlaceCell()
-{
-    UIButton *_starButton;
-}
+
 @end
 
 @implementation PlaceCell
-
-@synthesize starButton;
-
-//@synthesize photo;
-//@synthesize labelStr;
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -41,29 +23,46 @@
     return self;
 }
 
-- (void)setFrame:(CGRect)frame
-{
-    frame.origin.y += 10;
-    frame.size.height -= 10;
-    [super setFrame:frame];
-}
-
 #pragma mark - 初始化视图
 
 - (void)initSubView
 {
-    CGRect buttonFrame = CGRectMake(320, 12, 25, 25);
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    CGRect buttonFrame = CGRectMake(0, 0, 25, 25);
     // 创建并设置 UIButton 对象
     self.starButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.starButton setFrame:buttonFrame];
-    [self.starButton setTitle:@"" forState:UIControlStateNormal];
+    // [self.starButton setTitle:@"" forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_star"] forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_starred"] forState:UIControlStateSelected];
+//    self.accessibilityElements = YES;
+//    self.accessibilityLabel =
+    
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; // 辅助指示视图为箭头
+    self.starButton.translatesAutoresizingMaskIntoConstraints = NO;
     // 添加目标-动作对
     [self.starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:self.starButton];
+    
+    // 添加约束
+    [NSLayoutConstraint activateConstraints:@[
+        [self.imageView.widthAnchor constraintEqualToConstant:50],
+        [self.imageView.heightAnchor constraintEqualToConstant:50],
+        [self.imageView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:20],
+        [self.imageView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:5],
+        [self.imageView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-5],
+        
+        [self.textLabel.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
+        [self.textLabel.leadingAnchor constraintEqualToAnchor:self.imageView.trailingAnchor constant:10],
+        
+        [self.starButton.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor], // 设置图片视图位于 Y 轴居中
+        [self.starButton.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-10],
+        [self.starButton.widthAnchor constraintEqualToConstant:25],
+        [self.starButton.heightAnchor constraintEqualToConstant:25]
+    ]];
 }
 
 - (void)configureWithFavorite:(BOOL)favor
@@ -77,7 +76,10 @@
     sender.selected = !sender.selected;
     self.favorite = sender.selected;
     // 通知 placeCellDelegate
-    [self.placeCellDelegate updateFavorite:self.favorite atPlaceCell:self];
+    if (self.placeCellDelegate && [self.placeCellDelegate respondsToSelector:@selector(updateFavorite:atPlaceCell:)])
+    {
+        [self.placeCellDelegate updateFavorite:self.favorite atPlaceCell:self];
+    }
     // NSLog(@"tag: %ld", sender.tag);
     // PlaceCell *curCell = (PlaceCell *)[sender superview];
     // NSIndexPath *indexPath = [IndexPath indexPathForRow:sender.tag inSection:[tableView reloadRows];

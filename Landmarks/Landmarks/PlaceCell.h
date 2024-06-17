@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlaceCell : UITableViewCell
 
-@property (nonatomic) UIButton *starButton;
+@property (nonatomic, strong) UIButton *starButton;
 
-//@property (nonatomic, strong) UIImage *photo;
-//@property (nonatomic, strong) NSString *labelStr;
+// @property (nonatomic, strong) UIImage *photo;
+// @property (nonatomic, strong) NSString *labelStr;
 
 @property (nonatomic, weak) id<PlaceCellDelegate> placeCellDelegate;
 @property (nonatomic) BOOL favorite;

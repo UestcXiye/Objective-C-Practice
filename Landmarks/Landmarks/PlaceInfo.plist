@@ -172,5 +172,39 @@
 		<key>longitude</key>
 		<real>99.97</real>
 	</dict>
+	<key>10</key>
+	<dict>
+		<key>sight</key>
+		<string>莫高窟</string>
+		<key>scenicArea</key>
+		<string>敦煌</string>
+		<key>state</key>
+		<string>甘肃省敦煌市</string>
+		<key>pictureUrl</key>
+		<string>Image_MoGaoku</string>
+		<key>favorite</key>
+		<true/>
+		<key>latitude</key>
+		<real>40.041476</real>
+		<key>longitude</key>
+		<real>94.809133</real>
+	</dict>
+	<key>11</key>
+	<dict>
+		<key>sight</key>
+		<string>成都熊猫基地</string>
+		<key>scenicArea</key>
+		<string>成都大熊猫繁育研究基地</string>
+		<key>state</key>
+		<string>四川省成都市</string>
+		<key>pictureUrl</key>
+		<string>Image_DaXiongmao</string>
+		<key>favorite</key>
+		<false/>
+		<key>latitude</key>
+		<real>30.737297</real>
+		<key>longitude</key>
+		<real>104.14469</real>
+	</dict>
 </dict>
 </plist>

@@ -27,7 +27,8 @@
 //@property (nonatomic) UIView *dividerView2;
 //@property (nonatomic) UITableView *placeTable;
 
-@property (nonatomic) NSMutableArray *places;
+@property (nonatomic, strong) NSMutableArray *data; // 完整数据源
+@property (nonatomic, strong) NSMutableArray *places; // 过滤数据源
 
 - (void)initPlaces;
 

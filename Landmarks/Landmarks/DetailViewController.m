@@ -9,31 +9,14 @@
 #import "Place.h"
 
 @interface DetailViewController ()
-{
-    UILabel *_topLabel;
-    MKMapView *_mapView;
-    UIImageView *_pictureView;
-    UILabel *_sightLabel;
-    UIButton *_starButton;
-    UILabel *_scenicAreaLabel;
-    UILabel *_stateLabel;
 
-    Place *_place;
-}
 @end
-
 
 @implementation DetailViewController
 
-@synthesize topLabel;
-@synthesize mapView;
-@synthesize pictureView;
-@synthesize sightLabel;
-@synthesize starButton;
-@synthesize scenicAreaLabel;
-@synthesize stateLabel;
-
 @synthesize place;
+@synthesize favorite;
+@synthesize index;
 
 - (void)viewDidLoad
 {
@@ -98,7 +81,7 @@
     // 创建并设置 starButton
     self.starButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.starButton setFrame:starButtonFrame];
-    [self.starButton setTitle:@"" forState:UIControlStateNormal];
+    // [self.starButton setTitle:@"" forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_star"] forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_starred"] forState:UIControlStateSelected];
     self.starButton.selected = [place favorite];

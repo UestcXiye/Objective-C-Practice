@@ -9,14 +9,11 @@
 #import "Place.h"
 
 @interface ViewController ()
-//{
-//    NSMutableArray *_places;
-//}
+
 @end
 
 @implementation ViewController
 
-//@synthesize places = _places;
 
 - (void)viewDidLoad
 {
@@ -27,14 +24,16 @@
     UIFont *labelTitleFont = [UIFont fontWithName:@"Helvetica-Bold" size:35];
     [labelTitle setFont:labelTitleFont];
     // 设置分隔线
-    [dividerView1 setBackgroundColor:UIColor.lightGrayColor];
+    [dividerView1 setBackgroundColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.5f]];
     // 设置标签的字体
     UIFont *labelFavorFont = [UIFont systemFontOfSize:18];
     [labelFavor setFont:labelFavorFont];
+    // 设置开关
+    [favoriteSwitch setOn:NO];
     // 添加目标-动作对
     [favoriteSwitch addTarget:self action:@selector(favoriteSwitchValueChanged:) forControlEvents:UIControlEventValueChanged];
     // 设置分隔线
-    [dividerView2 setBackgroundColor:UIColor.lightGrayColor];
+    [dividerView2 setBackgroundColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.5f]];
     // 设置 TableView
     // [placeTable setRowHeight:60];
     // [placeTable setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, 0)];
@@ -100,6 +99,7 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self initPlaces];
+    self.places = [NSMutableArray arrayWithArray:self.data];
 
 //    [self.view addSubview:self.labelTitle];
 //    [self.view addSubview:self.dividerView1];
@@ -132,7 +132,9 @@
 - (void)initPlaces
 {
     // 创建数组
-    self.places = [NSMutableArray array];
+    self.data = [NSMutableArray array];
+    // self.places = [NSMutableArray array];
+    
     // 读文件
     NSBundle *bundle = [NSBundle mainBundle];
     NSURL *plistUrl = [bundle URLForResource:@"PlaceInfo" withExtension:@"plist"];
@@ -155,19 +157,29 @@
         NSLog(@"place inserted: <%@>", place);
         // Place *place = [[Place alloc] initWithSight:[placeInfo objectForKey:@"sight"] scenicArea:[placeInfo objectForKey:@"scenicArea"] state:[placeInfo objectForKey:@"state"] picture:[UIImage imageNamed:[placeInfo objectForKey:@"pictureUrl"]] favorite:[placeInfo objectForKey:@"favorite"] location:[[CLLocation alloc] initWithLatitude:[[placeInfo objectForKey:@"latitude"] doubleValue] longitude:[[placeInfo objectForKey:@"longitude"] doubleValue]]];
         // 插入数组
-        [self.places addObject:place];
+        [self.data addObject:place];
+        // [self.places addObject:place];
     }
+    // self.places = [NSMutableArray arrayWithArray:self.data];
 }
 
 - (IBAction)favoriteSwitchValueChanged:(UISwitch *)sender {
     if ([sender isOn])
     {
-        placeTable.backgroundColor = [UIColor whiteColor];
+        [self.places removeAllObjects];
+        for (Place *p in self.data)
+        {
+            if ([p favorite])
+            {
+                [self.places addObject:p];
+            }
+        }
     }
     else
     {
-        placeTable.backgroundColor = [UIColor blackColor];
+        self.places = [NSMutableArray arrayWithArray:self.data];
     }
+    [placeTable reloadData];
 }
 
 #pragma mark - TableView Data Source Methods
@@ -201,7 +213,6 @@
     Place *item = [self.places objectAtIndex:indexPath.row];
     cell.textLabel.text = [item sight];
     cell.imageView.image = [item picture];
-    cell.starButton.selected = [item favorite];
     
     // 设置 PlaceCellDelegate
     cell.placeCellDelegate = self;
@@ -261,6 +272,9 @@
     [detailViewController setIndex:indexPath.row];
     // 设置代理，并且遵守 DetailViewControllerDelegate
     detailViewController.detailViewControllerDelegate = self;
+    // 设置返回按钮
+    self.navigationItem.backBarButtonItem =
+        [[UIBarButtonItem alloc] initWithTitle:@"Landmarks" style:UIBarButtonItemStylePlain target:nil action:nil];
     // 界面跳转
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
@@ -272,10 +286,10 @@
     // 去 TableView 查该 cell 对应的 indexPath
     NSIndexPath *indexPath = [placeTable indexPathForCell:cell];
     // NSIndexPath *indexPath = [self.placeTable indexPathForCell:cell];
-    NSLog(@"before starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
+    // NSLog(@"before starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
     // 修改数据源对应的对象
     [self.places[indexPath.row] setFavorite:newFavorite];
-    NSLog(@"after starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
+    // NSLog(@"after starButton in row %ld clicked: %d", indexPath.row, [self.places[indexPath.row] favorite]);
     // TableView 重新加载被修改了的那一行
     [placeTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     // [self.placeTable reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -286,6 +300,7 @@
 // 实现协议方法，获取值
 - (void)detailViewController:(DetailViewController *)detailViewController goBackWithFavorite:(BOOL)favorite atIndex:(NSInteger)index
 {
+    
     // 修改数据源对应的对象
     [self.places[index] setFavorite:favorite];
     // TableView 重新加载被修改了的那一行

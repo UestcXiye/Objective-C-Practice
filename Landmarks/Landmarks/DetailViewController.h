@@ -25,15 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <DetailViewControllerDelegate> detailViewControllerDelegate;
 
-@property (nonatomic) UILabel *topLabel;
-@property (nonatomic) MKMapView *mapView;
-@property (nonatomic) UIImageView *pictureView;
-@property (nonatomic) UILabel *sightLabel;
-@property (nonatomic) UIButton *starButton;
-@property (nonatomic) UILabel *scenicAreaLabel;
-@property (nonatomic) UILabel *stateLabel;
+@property (nonatomic, strong) UILabel *topLabel;
+@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) UIImageView *pictureView;
+@property (nonatomic, strong) UILabel *sightLabel;
+@property (nonatomic, strong) UIButton *starButton;
+@property (nonatomic, strong) UILabel *scenicAreaLabel;
+@property (nonatomic, strong) UILabel *stateLabel;
 
-@property (nonatomic) Place *place;
+@property (nonatomic, strong) Place *place;
 @property (nonatomic) BOOL favorite;
 @property (nonatomic) NSInteger index;
 
