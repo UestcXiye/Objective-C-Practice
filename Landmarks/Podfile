@@ -1,0 +1,6 @@
+source 'https://git.woa.com/karaoke-cocoapods/Specs.git'
+platform :ios, '17.5'
+use_frameworks!
+target 'Landmarks' do
+  pod 'LookinServer', '1.2.2', :configurations => ['Debug']
+end

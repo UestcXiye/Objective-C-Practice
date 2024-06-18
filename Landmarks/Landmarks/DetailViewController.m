@@ -22,12 +22,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    /* width: 393, height: 852 */
-    CGFloat viewFrameWidth = self.view.frame.size.width, viewFrameHeight = self.view.frame.size.height;
-    // NSLog(@"%lf, %lf", viewFrameWidth, viewFrameHeight);
-    CGRect topFrame = CGRectMake(0, 0, 100, 50);
-    CGRect mapFrame = CGRectMake(0, 0, viewFrameWidth, 290);
+
+    CGRect topFrame = CGRectMake(0, 0, 100, 44);
+    CGRect mapFrame = CGRectMake(0, 0, 300, 290);
     CGRect pictureFrame = CGRectMake(0, 0, 250, 250);
     CGRect sightFrame = CGRectMake(0, 0, 150, 80);
     CGRect starButtonFrame = CGRectMake(0, 0, 25, 25);
@@ -47,7 +44,6 @@
     [self.mapView setMapType:MKMapTypeStandard];
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance([[self place] location].coordinate, 10000, 10000);
     [self.mapView setRegion:viewRegion];
-    // self.mapView.contentMode = UIViewContentModeScaleAspectFit;
     self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // 创建并设置 pictureView
@@ -56,7 +52,6 @@
     self.pictureView.layer.cornerRadius = 125.0;
     self.pictureView.layer.borderWidth = 4.0;
     self.pictureView.layer.borderColor = [UIColor whiteColor].CGColor;
-    // self.pictureView.contentMode = UIViewContentModeScaleAspectFit;
     self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;
     // 在 pictureView 上直接设置阴影，会因为 masksToBounds = true 而被裁减掉
     self.pictureView.layer.masksToBounds = YES;
@@ -73,7 +68,6 @@
     self.sightLabel = [[UILabel alloc] initWithFrame:sightFrame];
     [self.sightLabel setFont:[UIFont systemFontOfSize:28]];
     [self.sightLabel setText:[self.place sight]];
-    // self.sightLabel.adjustsFontSizeToFitWidth = YES;
     self.sightLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     // 创建并设置 starButton
@@ -109,30 +103,24 @@
     [self.view addSubview:self.stateLabel];
     
     /* 添加约束 */
-    // topLabel 的上边缘距离 view 的上边缘有 50px，且居中显示
+    // topLabel 的上边缘距离 view 的上边缘有 45px，且 X 轴居中
     [NSLayoutConstraint activateConstraints:@[
-        [self.topLabel.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:50],
+        // [self.topLabel.centerYAnchor constraintEqualToAnchor:self.navigationController.navigationBar.centerYAnchor],
+        [self.topLabel.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:45],
         [self.topLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor], // 设置视图位于 X 轴居中
-        [self.topLabel.heightAnchor constraintEqualToConstant:50] // 设置视图的高度为 50 点
+        [self.topLabel.heightAnchor constraintEqualToConstant:44] // 设置视图的高度为 44 点
     ]];
-    // mapView 的上边缘位于 topLabel 的下边缘
-    NSLayoutConstraint *mapTopAttachToTopButtom = [NSLayoutConstraint constraintWithItem:self.mapView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topLabel attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    [self.view addConstraint:mapTopAttachToTopButtom];
+    // mapView 的上边缘位于 topLabel 的下边缘，且 X 轴居中
     [NSLayoutConstraint activateConstraints:@[
+        [self.mapView.topAnchor constraintEqualToAnchor:self.topLabel.bottomAnchor],
         [self.mapView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor], // 设置地图视图位于 X 轴居中
-        // [self.mapView.topAnchor constraintEqualToAnchor:self.topLabel.bottomAnchor],
-        // [self.mapView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
-        // [self.mapView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
         [self.mapView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor],
         [self.mapView.heightAnchor constraintEqualToConstant:290] // 设置地图视图的高度为 290px
     ]];
-    // pictureView 的中心位于 mapView 的下边缘
-    NSLayoutConstraint *pictureCenterYAttachToMapButtom = [NSLayoutConstraint constraintWithItem:self.pictureView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.mapView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    [self.view addConstraint:pictureCenterYAttachToMapButtom];
-    // pictureView 的宽高为 250px，且 X 轴居中
+    // pictureView 的中心位于 mapView 的下边缘，宽高为 250px，且 X 轴居中
     [NSLayoutConstraint activateConstraints:@[
+        [self.pictureView.centerYAnchor constraintEqualToAnchor:self.mapView.bottomAnchor],
         [self.pictureView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor], // 设置图片视图位于 X 轴居中
-        // [self.pictureView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor], // 设置图片视图位于 Y 轴居中
         [self.pictureView.widthAnchor constraintEqualToConstant:250], // 设置图片视图的宽度为 250px
         [self.pictureView.heightAnchor constraintEqualToConstant:250] // 设置图片视图的高度为 250px
     ]];
@@ -168,7 +156,6 @@
 - (void)starButtonClicked:(UIButton *)sender
 {
     sender.selected = !sender.selected;
-    // [place setFavorite:sender.selected];
     self.favorite = sender.selected;
     // 首先判断代理人是否存在并且是否遵守协议并且实现了协议方法
     if (_detailViewControllerDelegate && [_detailViewControllerDelegate respondsToSelector:@selector(detailViewController:goBackWithFavorite:atIndex:)])

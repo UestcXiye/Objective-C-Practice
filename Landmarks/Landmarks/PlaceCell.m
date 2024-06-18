@@ -28,6 +28,9 @@
 - (void)initSubView
 {
     self.backgroundColor = [UIColor whiteColor];
+    [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; // 辅助指示视图为箭头
+    // self.isAccessibilityElement = YES;
+    
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -38,10 +41,9 @@
     // [self.starButton setTitle:@"" forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_star"] forState:UIControlStateNormal];
     [self.starButton setImage:[UIImage imageNamed:@"Image_starred"] forState:UIControlStateSelected];
-//    self.accessibilityElements = YES;
-//    self.accessibilityLabel =
     
-    [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; // 辅助指示视图为箭头
+    
+    
     self.starButton.translatesAutoresizingMaskIntoConstraints = NO;
     // 添加目标-动作对
     [self.starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -77,30 +79,10 @@
     sender.selected = !sender.selected;
     self.favorite = sender.selected;
     // 通知 placeCellDelegate
-    if (self.placeCellDelegate && [self.placeCellDelegate respondsToSelector:@selector(updateFavorite:atPlaceCell:)])
+    if (self.placeCellDelegate && [self.placeCellDelegate respondsToSelector:@selector(placeCell:updateFavorite:)])
     {
-        [self.placeCellDelegate updateFavorite:self.favorite atPlaceCell:self];
+        [self.placeCellDelegate placeCell:self updateFavorite:self.favorite];
     }
-    // NSLog(@"tag: %ld", sender.tag);
-    // PlaceCell *curCell = (PlaceCell *)[sender superview];
-    // NSIndexPath *indexPath = [IndexPath indexPathForRow:sender.tag inSection:[tableView reloadRows];
 }
 
-//- (void)setPhoto:(UIImage *)img
-//{
-//    if (![img isEqual:photo])
-//    {
-//        photo = [img copy];
-//        self.imageView.image = photo;
-//    }
-//}
-//
-//- (void)setLabelStr:(NSString *)lab
-//{
-//    if (![lab isEqualToString:labelStr])
-//    {
-//        labelStr = [lab copy];
-//        self.textLabel.text = labelStr;
-//    }
-//}
 @end

@@ -6,16 +6,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PlaceCellDelegate.h"
+
+@class PlaceCell;
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol PlaceCellDelegate <NSObject>
+
+@optional
+
+- (void)placeCell:(PlaceCell *)cell updateFavorite:(BOOL)favorite;
+
+@end
 
 @interface PlaceCell : UITableViewCell
 
 @property (nonatomic, strong) UIButton *starButton;
-
-// @property (nonatomic, strong) UIImage *photo;
-// @property (nonatomic, strong) NSString *labelStr;
 
 @property (nonatomic, weak) id<PlaceCellDelegate> placeCellDelegate;
 @property (nonatomic) BOOL favorite;

@@ -25,4 +25,3 @@
 - (void)initPlaces;
 
 @end
-

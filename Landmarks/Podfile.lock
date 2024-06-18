@@ -1,0 +1,18 @@
+PODS:
+  - LookinServer (1.2.2):
+    - LookinServer/Core (= 1.2.2)
+  - LookinServer/Core (1.2.2)
+
+DEPENDENCIES:
+  - LookinServer (= 1.2.2)
+
+SPEC REPOS:
+  https://git.woa.com/karaoke-cocoapods/Specs.git:
+    - LookinServer
+
+SPEC CHECKSUMS:
+  LookinServer: 43e35893cee645eb40ab8002c86657e96b344267
+
+PODFILE CHECKSUM: 7a3696ec652a8a6d90afd0d33e0d67fefca87bb6
+
+COCOAPODS: 1.11.3
