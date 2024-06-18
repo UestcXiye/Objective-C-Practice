@@ -11,21 +11,13 @@
 
 @interface ViewController : UIViewController
     <UITableViewDelegate, UITableViewDataSource, PlaceCellDelegate, DetailViewControllerDelegate>
-{
-    IBOutlet UILabel *labelTitle;
-    IBOutlet UIView *dividerView1;
-    IBOutlet UILabel *labelFavor;
-    IBOutlet UISwitch *favoriteSwitch;
-    IBOutlet UIView *dividerView2;
-    IBOutlet UITableView *placeTable;
-}
 
-//@property (nonatomic) UILabel *labelTitle;
-//@property (nonatomic) UIView *dividerView1;
-//@property (nonatomic) UILabel *labelFavor;
-//@property (nonatomic) UISwitch *favoriteSwitch;
-//@property (nonatomic) UIView *dividerView2;
-//@property (nonatomic) UITableView *placeTable;
+@property (nonatomic, strong) UILabel *labelTitle;
+@property (nonatomic, strong) UIView *dividerView1;
+@property (nonatomic, strong) UILabel *labelFavor;
+@property (nonatomic, strong) UISwitch *favoriteSwitch;
+@property (nonatomic, strong) UIView *dividerView2;
+@property (nonatomic, strong) UITableView *placeTable;
 
 @property (nonatomic, strong) NSMutableArray *data; // 完整数据源
 @property (nonatomic, strong) NSMutableArray *places; // 过滤数据源

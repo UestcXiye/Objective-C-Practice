@@ -27,6 +27,7 @@
 
 - (void)initSubView
 {
+    self.backgroundColor = [UIColor whiteColor];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     

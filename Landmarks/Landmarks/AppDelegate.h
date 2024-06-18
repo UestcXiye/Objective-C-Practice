@@ -11,7 +11,5 @@
 
 @property (nonatomic, strong) UIWindow *window;
 
-- (void)createAppWindow;
-
 @end
 
